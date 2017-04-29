@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Angularfy">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +8,12 @@
   <title>AngularFy | FullStack.pe</title>
 
   <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
-  <link href="css/font-awesome.css" rel="stylesheet">
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+
+  <script src="assets/js/angular.min.js"></script>
+  <script src="controller/app.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,39 +30,48 @@
       <p class="lead">Crea tu playlist de tu artista favorito.</p>
     </div>
 
-    <h3>Busca artista:</h3>
-    <p>
-      <input type="text" class="form-control input-lg" name="artist" placeholder="Ingresa el nombre de tu cantante o banda favorita">
-    </p>
-    <p>
-      <input class="btn btn-block btn-primary input-lg" type="submit" value="Buscar">
-    </p>
-    <table class="table">
-      <caption>Resultados:</caption>
-      <thead>
-        <tr>
-          <th class="col-md-1">#</th>
-          <th>Cantante</th>
-          <th class="col-md-1 text-center">Seleccionar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>1</th>
-          <td>Cantante 1</td>
-          <td class="text-center">
-            <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-        <tr>
-          <th>2</th>
-          <td>Cantante 2</td>
-          <td class="text-center">
-            <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+    <section ng-controller="Buscador">
+
+      <h3>Busca artista:</h3>
+      <p>
+        <input type="text" class="form-control input-lg" ng-model="artista" placeholder="Ingresa el nombre de tu cantante o banda favorita">
+      </p>
+      <p>
+        <button class="btn btn-block btn-primary input-lg" value="Buscar" ng-click="buscar()" > Buscar </button>
+      </p>
+      
+      <div ng-if="mensaje" class="alert alert-danger">{{ mensaje }}</div>
+
+      <table class="table">
+        <caption>Resultados:</caption>
+        <thead>
+          <tr>
+            <th class="col-md-1">#</th>
+            <th>Cantante</th>
+            <th class="col-md-1 text-center">Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="artista in artistas">
+            <th> {{ $index }} </th>
+            <td> {{  artista.name }} </td>
+            <td class="text-center">
+              <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+          <!--
+          <tr>
+            <th>2</th>
+            <td>Cantante 2</td>
+            <td class="text-center">
+              <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+          -->
+        </tbody>
+      </table>
+    </section>
 
     <h3>[Nombre del artista seleccionado]</h3>
 
@@ -98,8 +110,8 @@
   </footer>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="js/jquery.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
