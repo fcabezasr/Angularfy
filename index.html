@@ -13,6 +13,7 @@
   <link href="assets/css/custom.css" rel="stylesheet">
 
   <script src="assets/js/angular.min.js"></script>
+  <script src="assets/js/angular-route.min.js"></script>
   <script src="controller/app.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -30,76 +31,8 @@
       <p class="lead">Crea tu playlist de tu artista favorito.</p>
     </div>
 
-
-    <section ng-controller="Buscador">
-
-      <h3>Busca artista:</h3>
-      <p>
-        <input type="text" class="form-control input-lg" ng-model="artista" placeholder="Ingresa el nombre de tu cantante o banda favorita">
-      </p>
-      <p>
-        <button class="btn btn-block btn-primary input-lg" value="Buscar" ng-click="buscar()" > Buscar </button>
-      </p>
-      
-      <div ng-if="mensaje" class="alert alert-danger">{{ mensaje }}</div>
-
-      <table class="table">
-        <caption>Resultados:</caption>
-        <thead>
-          <tr>
-            <th class="col-md-1">#</th>
-            <th>Cantante</th>
-            <th class="col-md-1 text-center">Seleccionar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="artista in artistas">
-            <th> {{ $index }} </th>
-            <td> {{  artista.name }} </td>
-            <td class="text-center">
-              <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-            </td>
-          </tr>
-          <!--
-          <tr>
-            <th>2</th>
-            <td>Cantante 2</td>
-            <td class="text-center">
-              <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
-            </td>
-          </tr>
-          -->
-        </tbody>
-      </table>
-    </section>
-
-    <h3>[Nombre del artista seleccionado]</h3>
-
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 1</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 2</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 3</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 4</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 5</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 6</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 7</label>
-    </div>
-
-    <p>
-      <input class="btn btn-block btn-default input-lg" type="submit" value="Armar playlist">
-    </p>
+  
+    <section ng-view></section>
 
   </div>
 

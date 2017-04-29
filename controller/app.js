@@ -1,4 +1,23 @@
-var app = angular.module("Angularfy", []);
+var app = angular.module("Angularfy", ["ngRoute"]);
+
+
+app.config(['$routeProvider', function($routeProvider){
+
+	// Definimos que controlador y plantilla se cargará al entrar a la ruta /home
+	$routeProvider
+	.when("/", {
+		controller	: 'Buscador',
+		templateUrl	: 'view/home.html'
+	})
+	.when("/playlist", {
+		controller	: 'PlayList',
+		templateUrl	: 'view/playlist.html'
+	})
+	.otherwise({
+		redirecTo: "/home"
+	})
+
+}]);
 
 app.controller("Buscador", function($scope, $http){
 
@@ -41,5 +60,10 @@ app.controller("Buscador", function($scope, $http){
 
 		}
 	}
+
+});
+
+
+app.controller("PlayList", function($scope){
 
 });
