@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>AngularFy | FullStack.pe</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+
+    <div class="page-header text-center">
+      <h1>AngularFy</h1>
+      <p class="lead">Crea tu playlist de tu artista favorito.</p>
+    </div>
+
+    <h3>Busca artista:</h3>
+    <p>
+      <input type="text" class="form-control input-lg" name="artist" placeholder="Ingresa el nombre de tu cantante o banda favorita">
+    </p>
+    <p>
+      <input class="btn btn-block btn-primary input-lg" type="submit" value="Buscar">
+    </p>
+    <table class="table">
+      <caption>Resultados:</caption>
+      <thead>
+        <tr>
+          <th class="col-md-1">#</th>
+          <th>Cantante</th>
+          <th class="col-md-1 text-center">Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>1</th>
+          <td>Cantante 1</td>
+          <td class="text-center">
+            <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>Cantante 2</td>
+          <td class="text-center">
+            <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>[Nombre del artista seleccionado]</h3>
+
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Canción 1</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Canción 2</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Canción 3</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Canción 4</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Canción 5</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Canción 6</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Canción 7</label>
+    </div>
+
+    <p>
+      <input class="btn btn-block btn-default input-lg" type="submit" value="Armar playlist">
+    </p>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container text-right">
+      <p class="text-muted"><a href="https://www.fullStack.pe" target="_blank">https://www.fullStack.pe</a></p>
+    </div>
+  </footer>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.js"></script>
+</body>
+</html>
