@@ -19,7 +19,26 @@ app.config(['$routeProvider', function($routeProvider){
 
 }]);
 
-app.controller("Buscador", function($scope, $http){
+
+app.service("Artista", function($http){
+
+	this.traerArtistas = function(artista, callback){
+
+		// Obtener la data del artista usando la API de spotify	
+		artista = artista.replace(' ','+');
+
+		$http.get("https://api.spotify.com/v1/searcha?q="+artista+"&type=artist")
+		.then(callback);
+	}
+});
+
+
+
+//app.controller("Buscador", function($scope, $http, Artista){
+app.controller("Buscador", function($scope, Artista){
+
+	$scope.mensaje = false;
+	$scope.Artista = Artista;
 
 	$scope.buscar = function(){
 
@@ -37,29 +56,19 @@ app.controller("Buscador", function($scope, $http){
 			// Si ha escrito algo borro el $scope mensaje
 			$scope.mensaje = false;
 
-			// Obtener la data del artista usando la API de spotify
-			$http.get("https://api.spotify.com/v1/search?q="+$scope.artista+"&type=artist").then(
-				function(response){
-					// Mostrar el resultado si es correcto
-					console.log("response", response);
-
-					$scope.artistas = response.data.artists.items;
-
-					console.log("artistas", $scope.artistas);
-				},
-				function(response){
-					// Mostrar un mensaje de error si no es correcto
-					console.error(response.data.error.status, response.data.error.message);
-				}
-			);
-
-			// Mostrar el resultado si es correcto
-
-
-			// Mostrar un mensaje de error si no se encuentra
-
+			Artista.traerArtistas(artista, function(response){
+				// Mostrar el resultado si es correcto
+				$scope.artistas = response.data.artists.items;
+			});
 		}
 	}
+
+});
+
+
+app.controller("Selector", function($scope, Artista){
+
+	$scope.Artista = Artista;
 
 });
 
