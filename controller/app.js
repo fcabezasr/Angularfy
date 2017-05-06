@@ -52,12 +52,22 @@ app.service("Artista", function($http){
 		return this.cantante;
 	}
 
-	// Guarde las canciones seleccionadas
-	this.seleccionadas = [];
+	// Verificamos si tenemos almacenadas las canciones seleccionadas
+	let memoria = localStorage.getItem("playlist");
+	if (memoria == undefined) {
+		this.seleccionadas = [];
+	} else {
+		this.seleccionadas = JSON.parse(memoria);
+	}
 
 	this.traerSeleccionadas = function(){
 
 		return this.seleccionadas;
+	}
+
+	// Limpiamos el PlayList
+	this.reset = function(){
+		this.seleccionadas = [];
 	}
 
 });
@@ -121,6 +131,8 @@ app.controller("Selector", function($scope, Artista){
 		};
 
 		Artista.seleccionadas.push(cancion);
+		// Guardar las canciones seleccionadas en el localStorage como JSON
+		localStorage.setItem("playlist", JSON.stringify(Artista.seleccionadas));
 	}
 
 });
@@ -129,4 +141,18 @@ app.controller("Selector", function($scope, Artista){
 app.controller("PlayList", function($scope, Artista){
 
 	$scope.Artista = Artista;
+	var playing = undefined;
+	// Reproducimos el preview
+	$scope.reproducir = function(preview){
+		
+		if (playing) {
+			playing.pause();
+			playing = undefined;
+		} else {
+			playing = new Audio(preview);
+			playing.play();
+		}
+	}
+
+
 });

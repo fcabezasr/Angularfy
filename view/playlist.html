@@ -13,15 +13,20 @@
       </thead>
       <tbody>
         <tr ng-repeat="cancion in Artista.traerSeleccionadas()">
-          <th>{{ index + 1 }}</th>
+          <th>{{ $index + 1 }}</th>
           <td>{{ cancion.nombre }}</td>
           <td class="text-center">
-            <a href="{{  }}" class="btn btn-primary"><i class="fa fa-play" aria-hidden="true"></i></a>
+            <button class="btn btn-primary" ng-click="reproducir(cancion.preview)">
+              <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
 
-
-    <a href="#!/">ver Buscador</a>	
+    <p>
+      <a href="#!/" class="btn btn-block btn-default input-lg" ng-click="Artista.reset()">
+        Armar nuevo PlayList
+      </a>
+    </p>
 </section>
