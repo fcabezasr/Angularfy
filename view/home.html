@@ -24,9 +24,11 @@
       <tr ng-repeat="artista in artistas">
         <th> {{ $index + 1 }} </th>
         <th><img src="{{ artista.images[0].url }}" width="50px"></th>
-        <td> {{  artista.name }} </td>
+        <td> {{ artista.name }}</td>
         <td class="text-center">
-          <a href="#" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          <button class="btn btn-success" ng-click="seleccionar(artista.id, artista.name)">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
         </td>
       </tr>
       <!--
@@ -50,28 +52,10 @@
   <a href="#!/playlist">ver PlayList</a>
 
 
-    <h3>{{ Artista.nombre }}</h3>
+    <h3>{{ Artista.traerCantante() }}</h3>
 
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 1</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 2</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 3</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 4</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 5</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 6</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Canción 7</label>
+    <div class="checkbox" ng-repeat="cancion in Artista.listarCanciones()">
+      <label><input type="checkbox" value="">{{ cancion.name }}</label>
     </div>
 
     <p>

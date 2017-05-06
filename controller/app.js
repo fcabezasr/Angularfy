@@ -27,9 +27,29 @@ app.service("Artista", function($http){
 		// Obtener la data del artista usando la API de spotify	
 		artista = artista.replace(' ','+');
 
-		$http.get("https://api.spotify.com/v1/searcha?q="+artista+"&type=artist")
-		.then(callback);
+		$http.get("https://api.spotify.com/v1/search?q="+artista+"&type=artist").then(callback);
 	}
+
+	this.traerCanciones = function(idartista, callback){
+
+		// Traer la lista de canciones
+		$http.get("https://api.spotify.com/v1/artists/"+idartista+"/top-tracks?country=US").then(callback);
+	}
+
+	this.canciones = [];
+
+	this.listarCanciones = function(){
+
+		return this.canciones;
+	}
+
+	this.cantante = undefined;
+
+	this.traerCantante = function(){
+
+		return this.cantante;
+	}
+
 });
 
 
@@ -62,6 +82,18 @@ app.controller("Buscador", function($scope, Artista){
 			});
 		}
 	}
+
+
+	$scope.seleccionar = function(idartista, nombre){
+
+		Artista.traerCanciones(idartista, function(response){
+			// Actualizamos el array de canciones
+			Artista.canciones = response.data.tracks;
+			// Mostrar el nombre del cantante
+			Artista.cantante = nombre;
+		})
+	}
+
 
 });
 
