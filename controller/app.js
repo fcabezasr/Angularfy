@@ -36,6 +36,7 @@ app.service("Artista", function($http){
 		$http.get("https://api.spotify.com/v1/artists/"+idartista+"/top-tracks?country=US").then(callback);
 	}
 
+	// Mostrar el listado de canciones
 	this.canciones = [];
 
 	this.listarCanciones = function(){
@@ -43,11 +44,20 @@ app.service("Artista", function($http){
 		return this.canciones;
 	}
 
+	// Mostrar el nombre del cantante
 	this.cantante = undefined;
 
 	this.traerCantante = function(){
 
 		return this.cantante;
+	}
+
+	// Guarde las canciones seleccionadas
+	this.seleccionadas = [];
+
+	this.traerSeleccionadas = function(){
+
+		return this.seleccionadas;
 	}
 
 });
@@ -102,9 +112,21 @@ app.controller("Selector", function($scope, Artista){
 
 	$scope.Artista = Artista;
 
+	// Guardando las canciones seleccionadas en un Array
+	$scope.seleccionar = function(nombre, preview){
+
+		let cancion = {
+			nombre : nombre,
+			preview : preview
+		};
+
+		Artista.seleccionadas.push(cancion);
+	}
+
 });
 
 
-app.controller("PlayList", function($scope){
+app.controller("PlayList", function($scope, Artista){
 
+	$scope.Artista = Artista;
 });

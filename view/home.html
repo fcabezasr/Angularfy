@@ -49,18 +49,20 @@
 
 <section ng-controller="Selector">
 
-  <a href="#!/playlist">ver PlayList</a>
+  <h3>{{ Artista.traerCantante() }}</h3>
 
+  <div class="checkbox" ng-repeat="cancion in Artista.listarCanciones()">
+    <label>
+      <input type="checkbox" ng-click="seleccionar(cancion.name, cancion.preview_url)">
+      {{ cancion.name }}
+    </label>
+  </div>
 
-    <h3>{{ Artista.traerCantante() }}</h3>
-
-    <div class="checkbox" ng-repeat="cancion in Artista.listarCanciones()">
-      <label><input type="checkbox" value="">{{ cancion.name }}</label>
-    </div>
-
-    <p>
-      <input class="btn btn-block btn-default input-lg" type="submit" value="Armar playlist">
-    </p>
+  <p>
+    <a href="#!/playlist" class="btn btn-block btn-default input-lg">
+      Armar PlayList
+    </a>
+  </p>
 
 
 </section>
